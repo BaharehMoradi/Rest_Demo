@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
     private String message;
-
+    @Override
     public void init() {
         message = "This is a message for you! You have chosen   /hello-servlet   path.";
     }
-
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -24,7 +24,9 @@ public class HelloServlet extends HttpServlet {
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
     }
-
+    @Override
     public void destroy() {
+// Perform any necessary cleanup or resource releasing operations here
+        System.out.println("Servlet destroyed");
     }
 }
